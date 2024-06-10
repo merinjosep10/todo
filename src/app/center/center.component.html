@@ -1,0 +1,37 @@
+<div class="central text-center">
+  <div class="row">
+    <div class="col py-3">
+      <img src="../../assets/check.png" width="40" height="40" />
+    </div>
+    <div class="col-12 py-1">
+      <h6>Add your first todo</h6>
+    </div>
+    <div class="col-12 py-1">
+      <p>What do you want to get done today?</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-12 col-md-6">
+    <ul>
+      <li *ngFor="let todo of todos; let i = index">
+        <p>{{ i + 1 }} : {{ todo.name }}</p>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6 col-md-3 col-lg-4"></div>
+  <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+    <form (ngSubmit)="onSubmit()">
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        placeholder="Type your todo..."
+        [(ngModel)]="newtodo"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </form>
+  </div>
+</div>
