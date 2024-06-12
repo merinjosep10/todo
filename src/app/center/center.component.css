@@ -5,3 +5,46 @@
 input:hover {
   box-shadow: 0 0 10px rgba(256, 256, 256, 1);
 }
+
+ul{
+  list-style-type: none;
+}
+.ticked{
+text-decoration-line: line-through;
+}
+.notticked{
+  text-decoration-line: none;
+}
+.todo_list{
+  max-height: 50vh;
+  overflow: auto;
+}
+li{
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  border-bottom: 1px;
+  border-color: aliceblue;
+  background-color: rgb(83, 60, 146);
+}
+.todo_list{
+  border-radius: 10px;
+  border-bottom: 1px;
+  border-color: aliceblue;
+}
+span{
+  text-decoration: none;
+  flex-grow: 1;
+  padding-left:10px ;
+}
+
+button{
+  font-size: smaller;
+  border-radius: 24px;
+}
+button:hover {
+  box-shadow: 0 0 10px rgba(256, 256, 256, 1);
+}
+
+

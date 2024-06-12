@@ -1,7 +1,7 @@
-<div class="central text-center">
+<div class="central text-center" *ngIf="!todos.length">
   <div class="row">
-    <div class="col py-3">
-      <img src="../../assets/check.png" width="40" height="40" />
+    <div class="col-12 py-3">
+      <img src="/assets/check.png" width="40" height="40" alt="img" />
     </div>
     <div class="col-12 py-1">
       <h6>Add your first todo</h6>
@@ -11,19 +11,27 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row py-5" *ngIf="todos.length">
   <div class="col-md-3"></div>
   <div class="col-12 col-md-6">
     <ul>
-      <li *ngFor="let todo of todos; let i = index">
-        <p>{{ i + 1 }} : {{ todo.name }}</p>
-      </li>
+      <div class="todo_list">
+        <li id="i" *ngFor="let todo of todos; let i = index">
+          <input type="checkbox" [(ngModel)]="todo.checked" />
+          <span [ngClass]="todos[i].checked ? 'ticked' : 'notticked'">
+            {{ todo.name }}
+          </span>
+          <button (click)="delete_todo(todo.id)">
+            <i class="fa fa-close"></i>
+          </button>
+        </li>
+      </div>
     </ul>
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-6 col-md-3 col-lg-4"></div>
-  <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+  <div class="col-sm-2 col-md-3 col-lg-4"></div>
+  <div class="col-12 col-sm-8 col-md-6 col-lg-4">
     <form (ngSubmit)="onSubmit()">
       <input
         type="text"
