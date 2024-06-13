@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from "./header/header.component";
 import { CenterComponent } from './center/center.component';
 import { FooterComponent } from './footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
     declarations: [
         AppComponent
@@ -19,7 +20,8 @@ import { FooterComponent } from './footer/footer.component';
         FormsModule,
         HeaderComponent,
         CenterComponent,
-        FooterComponent
+        FooterComponent,
+        BrowserAnimationsModule
     ]
 })
 export class AppModule { }

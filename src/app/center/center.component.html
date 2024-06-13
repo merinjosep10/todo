@@ -1,16 +1,17 @@
 <div class="central text-center" *ngIf="!todos.length">
   <div class="row">
     <div class="col-12 py-3">
-      <img src="/assets/check.png" width="40" height="40" alt="img" />
+      <img src="assets/check.png" width="40" height="40" alt="img" />
     </div>
-    <div class="col-12 py-1">
+    <div class="col-12 py-2">
       <h6>Add your first todo</h6>
     </div>
-    <div class="col-12 py-1">
+    <div class="col-12 py-2">
       <p>What do you want to get done today?</p>
     </div>
   </div>
 </div>
+
 <div class="row py-5" *ngIf="todos.length">
   <div class="col-md-3"></div>
   <div class="col-12 col-md-6">
@@ -25,9 +26,15 @@
           <span [ngClass]="todos[i].checked ? 'ticked' : 'notticked'">
             {{ todo.name }}
           </span>
-          <button (click)="edit_todo(todo.id)">
+          <button
+            type="button"
+            (click)="editButtonClicked(todo.id)"
+            data-bs-toggle="modal"
+            data-bs-target="#myModal"
+          >
             <i class="fa fa-pencil"></i>
           </button>
+
           <button (click)="delete_todo(todo.id)">
             <i class="fa fa-close"></i>
           </button>
@@ -36,6 +43,7 @@
     </ul>
   </div>
 </div>
+
 <div class="row">
   <div class="col-sm-2 col-md-3 col-lg-4"></div>
   <div class="col-12 col-sm-8 col-md-6 col-lg-4">
@@ -48,5 +56,46 @@
         [ngModelOptions]="{ standalone: true }"
       />
     </form>
+  </div>
+</div>
+
+<!-- edit modal box -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit your todo</h4>
+        <button
+          type="button"
+          class="btn-close modal-button-close-icon px-4"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          [(ngModel)]="edittodo"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer dflex justify-content-around">
+        <button
+          class="modal-button"
+          type="button"
+          (click)="edit_todo()"
+          data-bs-dismiss="modal"
+        >
+          Save
+        </button>
+        <button class="modal-button" type="button" data-bs-dismiss="modal">
+          Cancel
+        </button>
+      </div>
+    </div>
   </div>
 </div>

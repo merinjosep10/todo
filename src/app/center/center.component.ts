@@ -5,10 +5,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
 import { NgIf } from '@angular/common';
 import { CommonModule } from '@angular/common';
+import { MatDialogModule} from '@angular/material/dialog'
 @Component({
   selector: 'app-center',
   standalone: true,
-  imports:[FormsModule,ReactiveFormsModule,NgFor,NgIf,CommonModule],
+  imports:[FormsModule,ReactiveFormsModule,NgFor,NgIf,CommonModule,MatDialogModule],
   templateUrl: './center.component.html',
   styleUrls: ['./center.component.css']
 })
@@ -16,6 +17,9 @@ import { CommonModule } from '@angular/common';
 export class CenterComponent implements OnInit{
   todos :ITodo[]=[];
   newtodo : string;
+  edittodo: string;
+  todoToEdit: number;
+
   ngOnInit(): void {
     this.loadTodos();
   }
@@ -43,8 +47,21 @@ export class CenterComponent implements OnInit{
     console.table(this.todos);
     localStorage.setItem('todos',JSON.stringify(this.todos));
   }
-  edit_todo(i:number)
+  edit_todo()
   {
+    const i = this.todoToEdit;
+    for (let object of this.todos) {
+      if (object.id === i) {
+          object.name = this.edittodo;
+          console.log(object.id)
+      }
+  }
+  this.edittodo='';
+  localStorage.setItem('todos',JSON.stringify(this.todos));
+  }
 
+  editButtonClicked(i: number) {
+    this.todoToEdit = i;
+    this.edittodo = this.todos.find(obj => obj.id === i)?.name || '';
   }
 }
