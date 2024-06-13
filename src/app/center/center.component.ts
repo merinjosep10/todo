@@ -35,11 +35,16 @@ export class CenterComponent implements OnInit{
   this.todos.push(todo)
   this.newtodo='';
   console.table(this.todos)
-  localStorage.setItem('todo',JSON.stringify(this.todos));
+  localStorage.setItem('todos',JSON.stringify(this.todos));
   }
   delete_todo(i:number)
   {
     this.todos = this.todos.filter(obj => obj.id !== i);
     console.table(this.todos);
+    localStorage.setItem('todos',JSON.stringify(this.todos));
+  }
+  edit_todo(i:number)
+  {
+
   }
 }

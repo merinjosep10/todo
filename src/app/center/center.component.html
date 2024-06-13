@@ -16,11 +16,18 @@
   <div class="col-12 col-md-6">
     <ul>
       <div class="todo_list">
-        <li id="i" *ngFor="let todo of todos; let i = index">
-          <input type="checkbox" [(ngModel)]="todo.checked" />
+        <li class="mb-2" id="i" *ngFor="let todo of todos; let i = index">
+          <input
+            class="checkbox_todo"
+            type="checkbox"
+            [(ngModel)]="todo.checked"
+          />
           <span [ngClass]="todos[i].checked ? 'ticked' : 'notticked'">
             {{ todo.name }}
           </span>
+          <button (click)="edit_todo(todo.id)">
+            <i class="fa fa-pencil"></i>
+          </button>
           <button (click)="delete_todo(todo.id)">
             <i class="fa fa-close"></i>
           </button>

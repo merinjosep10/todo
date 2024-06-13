@@ -6,6 +6,10 @@ input:hover {
   box-shadow: 0 0 10px rgba(256, 256, 256, 1);
 }
 
+input{
+  font-size: 18px;
+}
+
 ul{
   list-style-type: none;
 }
@@ -37,6 +41,7 @@ span{
   text-decoration: none;
   flex-grow: 1;
   padding-left:10px ;
+  font-size: 18px;
 }
 
 button{
@@ -45,6 +50,11 @@ button{
 }
 button:hover {
   box-shadow: 0 0 10px rgba(256, 256, 256, 1);
+}
+.checkbox_todo{
+  height: 20px;
+  width: 20px;
+  border-radius: 24px;
 }
 
 
